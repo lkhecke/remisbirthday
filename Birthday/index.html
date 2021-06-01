@@ -1,0 +1,782 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Rémi's Birthday Site</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
+
+
+  <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+  <div>
+    <div class="jukebox-container">
+      <div class="jukebox-title">
+          <img style="float: left; margin-top: 5px" width="20px" height="20px" src="musical-note.svg" alt="Note">
+        <h2 class="jukebox-heading">Jukebox</h2>
+      </div>
+      <div id="jukebox-song" class="jukebox-song">
+        <p style="float: left; margin: 0; margin-right: 15px; margin-top: 3px">
+          <span id="song-intro" style="font-family: Body; text-transform: uppercase; margin-right: 10px">
+            Insert Coin to Jam</span>
+          <span id="song-title"></span>
+        </p>
+        <audio id="myAudio" src="letsdance.mp3" preload="auto">
+        </audio>
+        <a onClick="togglePlay()">
+          <img id="playToggle" style="float: left; margin-top: 5px" width="15px" height="15px" src="">
+        </a>
+      </div>
+      <div class="jukebox-controls">
+        <a onClick="nextSong()">
+          <h2 style="margin: 0">&#x1FA99;</h2>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="main-container">
+    <div class="macheteimg">
+      <img  width="auto" height="750px" src="machete.png" alt="Remi">
+    </div>
+    <div class="chubbyimg">
+      <img class="rotate" width="auto" height="300px" src="remi.png" alt="Remi">
+    </div>
+    <div class="chubbyimg2">
+      <img class="rotate" width="auto" height="300px" src="remi.png" alt="Remi">
+    </div>
+    <div class="chubbyimg3">
+      <img class="rotate" width="auto" height="300px" src="remi.png" alt="Remi">
+    </div>
+    <div class="chairimg">
+      <img width="auto" height="300px" src="GIPHY.gif" alt="Remi">
+    </div>
+
+    <div class="danceimg">
+      <img  width="auto" height="200px" src="dance.gif" alt="Remi">
+    </div>
+    
+    <h1>Remi's<br> Birthday<br>Site<br></h1>
+    <!-- <div class="main-subtitle">
+      <h2>Twenty Six <br>and a Stud Muffin</h2>
+    </div>
+    <p>This is the official website for Rémi Burrito's 26th birthday. Fuck yeah baby.</p> -->
+    <div class="coolimg">
+      <img width="auto" height="450px" src="chair.png" alt="Remi">
+    </div>
+
+    
+  </div>
+  
+  <div class="spacer"></div>
+  <div class="tick" style="background-image: url('grobi.png')"></div>
+  <div class="spacer spacer-bottom"></div>
+
+
+  <div style="height:100%">
+    <div class="contest-container">
+      <h2>Remi Look-A-Like Contest</h2>
+    </div>
+    <!-- <div style="margin-left: 15px;">
+      <p>Vote for the star who looks most like Rémi.</p>
+
+    </div> -->
+    <div class="contest-content-container">
+      <p style="margin-left: 15px; font-size: 25px; text-align: center">Which celebrity does Rémi ressemble the most? Vote below!</p>
+
+          
+      <div id="celebs-container" class="celebs-container">
+        <div  style=" text-align: center">
+          <!-- <div class="emoji-container">
+            <div class="emojis">
+              <div class="emoji">
+                  <span>👑</span>
+              </div>
+            </div>
+          </div> -->
+          <img  width="75%" height="auto" src="8.png" alt="ben">
+          <h2 id="ben" style="margin-bottom: 0;">Ben Affleck</h2>
+          <p id="vote-ben" style="text-align: center; margin-top: 10px; font-size: 18px">Cast my vote &#x1F5F3;</p>
+        </div>
+        <div  style=" text-align: center" >
+          <img width="75%" height="auto" src="9.png" alt="james">
+          <h2 id="1" style="margin-bottom: 0;">James Blunt</h2>
+          <p id="vote-james" style="text-align: center; margin-top: 10px; font-size: 18px">Cast my vote &#x1F5F3;</p>
+        </div >
+        <div  style=" text-align: center" >
+          <img  width="75%" height="auto" src="10.png" alt="jon">
+          <h2 style="margin-bottom: 0;">Jon Heder</h2>
+          <p id="vote-jon" style="text-align: center; margin-top: 10px; font-size: 18px">Cast my vote &#x1F5F3;</p>
+        </div>
+        <div  style=" text-align: center" >
+          <img  width="75%" height="auto" src="11.png" alt="jean">
+          <h2 style="margin-bottom: 0;">Jean Dujardin</h2>
+          <p id="vote-jean" style="text-align: center; margin-top: 10px; font-size: 18px">Cast my vote &#x1F5F3;</p>
+        </div>
+    </div>
+    <ul id="pollResults"></ul>
+
+  </div> 
+<!-- 
+  <div class="contest-results-container">
+    <p style="margin-left: 15px; font-size: 25px; text-align: center">Which celebrity does Rémi ressemble the most? Here are the results!</p>
+   
+
+    <div class="graph">
+      <div class="contest-results-image">
+        <img width="100%" height="auto" src="8.png" alt="ben">
+      </div>
+      <div class="contest-results-name">
+        <h2>Ben Affleck</h2>
+      </div>
+      <div class="contest-results-bar">
+        <div id="contest-bar-ben" class="bar contest-bar-ben"></div>	
+      </div>
+    </div>
+    
+    
+
+   
+    
+</div> -->
+
+</div>
+
+
+
+  <div class="snack-container">
+    <h2 class="snack-heading">Snack Bar</h2>
+  </div>
+
+  <!-- <div class="ticker-wrap">
+    <div class="ticker">
+      <div class="ticker__item">
+        <img  width="125px" height="150px" src="whiskey.png" alt="whiskey">
+      </div> 
+      <div class="ticker__item">
+        <img  width="150px" height="150px" src="gfuel.png" alt="gfuel">
+      </div> 
+      <div class="ticker__item">
+        <img  width="170px" height="150px" src="espresso.png" alt="espresso">
+      </div> 
+      <div class="ticker__item">
+        <img  width="200px" height="150px"csrc="tacos.png" alt="tacos">
+      </div> 
+      <div class="ticker__item">
+        <img  width="175px" height="145px" src="croque.png" alt="croque">
+      </div> 
+      <div class="ticker__item">
+        <img width="150px" height="150px" src="rhubarb.png" alt="rhubarb">
+      </div>
+      <div class="ticker__item">
+        <img  width="150px" height="150px" src="eclair.png" alt="elair">
+      </div> 
+    </div>
+    </div> -->
+
+    <div class="scroll">
+      <span class="segment">
+        <img  width="125px" height="150px" src="whiskey.png" alt="whiskey">
+        <img  width="175px" height="145px" src="croque.png" alt="croque">
+        <img  width="150px" height="150px" src="eclair.png" alt="elair">
+        <img  width="200px" height="150px" src="burger.png" alt="burger">
+        <img  width="170px" height="150px" src="espresso.png" alt="espresso">
+        <img  width="150px" height="150px" src="italian.png" alt="pizza">
+        <img  width="150px" height="150px" src="g.png" alt="gfuel">
+        <img  width="200px" height="150px" src="tacos.png" alt="tacos">
+        <img width="150px" height="150px" src="rhubarb.png" alt="rhubarb">
+       
+
+
+      </span>
+      <span class="segment">
+        <img  width="125px" height="150px" src="whiskey.png" alt="whiskey">
+        <img  width="175px" height="145px" src="croque.png" alt="croque">
+        <img  width="150px" height="150px" src="eclair.png" alt="elair">
+        <img  width="200px" height="150px" src="burger.png" alt="burger">
+        <img  width="170px" height="150px" src="espresso.png" alt="espresso">
+        <img  width="150px" height="150px" src="italian.png" alt="pizza">
+        <img  width="150px" height="150px" src="g.png" alt="gfuel">
+        <img  width="200px" height="150px" src="tacos.png" alt="tacos">
+        <img width="150px" height="150px" src="rhubarb.png" alt="rhubarb">
+
+
+      </span>
+      <!-- <span class="segment">
+        <img  width="170px" height="150px" src="espresso.png" alt="espresso">
+      </span>
+      <span class="segment">
+        <img  width="200px" height="150px" src="tacos.png" alt="tacos">
+      </span>
+      <span class="segment">
+        <img  width="175px" height="145px" src="croque.png" alt="croque">
+      </span>
+      <span class="segment">
+        <img width="150px" height="150px" src="rhubarb.png" alt="rhubarb">
+      </span> -->
+    </div>
+
+     <div class="arcade-container">
+      <h2 class="arcade-heading">Party Games</h2>
+    </div>
+
+    <!-- <div class="gaming-container">
+      <!-- <h3 class="arcade-title">Remi's Arcade</h3> -->
+      <!-- <p>Click to play</p> -->
+
+      <!-- <h3 class="arcade-subtitle">Concrete Pinata</h3>
+      <h3 class="arcade-subtitle">Pin the Earring</h3>
+      <h3 class="arcade-subtitle">League of Legends (Out of Order)</h3>
+
+
+
+    </div>
+
+    <h3 class="arcade-subtitle">Concrete Pinata</h3>
+    <h3 class="arcade-subtitle">Pin the Earring</h3>
+    <h3 class="arcade-subtitle">Concrete Pinata</h3> -->
+
+<div>
+
+  <div class="pinata-container">
+    <!-- <h2 id="1" style="margin-bottom: 0;">Concrete Pinata</h2>
+    <p id="vote-james" style="text-align: center; margin-top: 0;">Wack wack</p>
+     -->
+
+     <!-- <div class="pinata-text">
+      <h1 id="1" style="margin-bottom: 0;">Concrete Pinata</h1>
+      <p id="vote-james" style="margin-top: 0; font-size: 2rem;">Give it a wack and it just might crack</p>  
+     </div> -->
+     <!-- <div class="officeimg">
+      <img width="500px" height="270px" src="office.gif" alt="office">
+    </div>
+
+    <div class="girlimg">
+      <img width="450px" height="800px" src="girl.png" alt="office">
+    </div> -->
+
+<!-- <div style="position: relative">
+
+    <div class="brand">
+     <img src="gift3.png" class="image-circle" />
+      <div class="brand-label">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" aria-hidden="true">
+          <defs>
+            <path id="a" d="M90 150a60 60 0 01120 0 60 60 0 01-120 0" />
+          </defs>
+          <use xlink:href="#a" fill="none" /><text>
+            <textPath xlink:href="#a">You found a birthday gift! Click to open.</textPath>
+          </text>
+        </svg>
+      </div>
+    </div>
+
+  </div> -->
+
+
+
+
+    <div style="width: 33%; float: left">
+      <img style="text-align: center; margin-left: 50%" id="pinata" onclick="ani()" width="350px" height="650px" src="pinata.png" alt="elair">
+
+    </div>
+<!-- 
+
+      <div style="width: 60%; float: left; margin-top: 70px;">
+        <h2 id="1" style="margin-bottom: 0; font-size: 50px">Concrete Pinata</h2>
+        <p style="margin-top: 0;  font-size: 20px">Give it a wack and it just might crack</p> 
+      </div> -->
+   
+
+  
+
+
+
+
+
+  
+    <div class="spacer"></div>
+    <div class="tick" style="background-image: url('con.png'); height: 60px"></div>
+    <div class="spacer spacer-bottom"></div>
+ 
+ 
+
+  </div>
+
+  <!-- <div class="image-bar">
+    <div>
+      <img width="400px" height="auto" src="banana.gif" alt="office">
+    </div>
+    <div>
+      <img width="150px" height="auto" src="girl.png" alt="office">
+    </div>
+    <div>
+      <img width="500px" height="auto" src="office.gif" alt="office">
+    </div>
+    <div></div>
+  </div> -->
+
+  <div class="space-bar"></div>
+
+
+
+
+
+  <div class="pin-container">
+
+    
+
+
+    <div style="width: 66%; float: left; position: absolute; bottom: 0px;">
+      <img style="text-align: center; margin-left: 66%" id="pinata" onclick="ani()" width="500px" height="auto" src="ski.png" alt="elair">
+    </div>
+
+    <!-- <div class="coolimg">
+      <img width="350px" height="425px" src="ski.png" alt="Remi">
+    </div> -->
+
+ 
+
+
+      
+
+      <div class="spacer" style="margin-bottom: 50px;">
+        <div>
+          <div id="draggable01">
+            <img style="margin-left: 500px; margin-top: 100px;"
+            width="20x" height="20px" src="earring.png">
+            </div>
+        </div>
+      </div>
+    <div class="tick" style="background-image: url('pin.png'); height: 60px"></div>
+    <div class="spacer spacer-bottom"></div>
+
+
+
+
+    <!-- <div style="width: 60%; float: left; margin-top: 70px;">
+      <h2 id="1" style="margin-bottom: 0; font-size: 50px">Pin the Earring on the Remi</h2>
+      <p style="margin-top: 0;  font-size: 20px">Zee original stud muffin</p> 
+    </div> -->
+  </div>
+
+</div>
+
+<!-- 
+<div>
+
+  <div class="pin-container">
+    <div class="officeimg">
+      <img width="500px" height="270px" src="office.gif" alt="office">
+    </div>
+
+    <div class="girlimg">
+      <img width="450px" height="800px" src="girl.png" alt="office">
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="image-bar">
+  <div>
+    <img width="400px" height="auto" src="banana.gif" alt="office">
+  </div>
+  <div>
+    <img width="150px" height="auto" src="girl.png" alt="office">
+  </div>
+  <div>
+    <img width="500px" height="auto" src="office.gif" alt="office">
+  </div>
+  <div></div>
+</div> -->
+
+<div class="cul-container">
+  <h2 class="arcade-heading">Santé!</h2>
+</div>
+
+
+
+<div>
+  <div class="culsec-container">
+      <img id="drinking1" style="border-right: 1px solid black;  max-width: 100%;
+      height: auto;
+      width: auto\9; /* ie8 */"  src="drink1.jpg" alt="drink">      
+ 
+
+    <div style="flex-grow: 1; padding: 40px">
+        <p style=" font-size: 25px;  margin-top: 0; margin-bottom: 0">Press and hold the beer below to make Remzo drink. Cul sec!</p> 
+        <button id="target" class="culsec-button">🍻</button>    
+      </div>
+
+
+
+      <!-- <div style="flex: 1 1 50%;">
+          <img width="500px" height="auto" src="cheer.gif" alt="office">
+        <div class="beerimg">
+          <img width="300px" height="auto" src="86.gif" alt="office">
+        </div>
+      </div> -->
+<!--       
+      <div style="background-color: blue">
+        <button id="target" class="culsec-button">Cul Sec</button>    
+        
+      </div> -->
+      
+  
+      <div class="cheersimg">
+        <img width="500px" height="auto" src="cheer.gif" alt="cheers">
+      </div>
+      <div class="beerimg">
+        <img width="300px" height="auto" src="86.gif" alt="86">
+      </div>
+    </div>
+
+
+</div>
+
+
+  </div>
+
+
+ 
+<div class="presents-container">
+  <h2 class="arcade-heading">The Best Part of Birthdays</h2>
+</div>
+
+<div class="contest-content-container" style="height: 100%;">
+  <div id="gift-heading" style="text-align: center">
+    <p style="margin-left: 15px; font-size: 25px; text-align: center">It's present time! Click on a present to see what's inside.</p> 
+  </div>
+
+  
+  <div class="emoji-container">
+    <div class="emojis">
+      <div class="emoji">
+        <button class='hoverme' onClick="changePhoto1()">
+          <img id="gift1" width="200px" height="auto" src="gift1.png">
+        </button>
+      </div>
+      <div class="emoji">
+        <button class='hoverme' onClick="changePhoto2()">
+          <img id="gift2" width="200px" height="auto" src="gift5.png">
+        </button>
+      </div>
+      <div class="emoji">
+        <button class='hoverme' onClick="changePhoto3()">
+          <img id="gift3" width="200px" height="auto" src="gift6.png">
+        </button>
+      </div>
+      <div class="emoji">
+        <button class='hoverme' onClick="changePhoto4()">
+          <img id="gift4" width="200px" height="auto" src="gift7.png">
+        </button>
+      </div>  
+      <div class="emoji">
+        <button class='hoverme' onClick="changePhoto5()">
+          <img id="gift5" width="200px" height="auto" src="gift8.jpeg">
+        </button>
+      </div>  
+    </div>
+  </div>
+  
+
+  <div id="gift-results" style="text-align: center;">
+    <div>
+      <img width="500px" height="auto" src="mit.gif" alt="office">
+    </div>
+  </div>
+
+
+ </div> 
+ 
+
+  <div class="footer-container">
+    <h2 class="footer-heading">Made by Lily 💕</h2>
+  </div>
+
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBqQO8s2ZbQOwhbYSxPh5HisgK2mdg5d_A",
+    authDomain: "remi-s-site.firebaseapp.com",
+    projectId: "remi-s-site",
+    storageBucket: "remi-s-site.appspot.com",
+    messagingSenderId: "848785722305",
+    appId: "1:848785722305:web:1fd52416c27fb539583d40",
+    measurementId: "G-3ZTCD12TMH"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  const dbRef = firebase.database().ref();
+  const pollRef = dbRef.child('poll');
+  var totalVotes = 1;
+  var highestVote = 0;
+
+  const pollListUI = document.getElementById("pollResults");
+  pollRef.on("child_added", snap => {
+    let result = snap.val();    
+    const voteId = document.getElementById(result.voteId);
+    voteId.setAttribute("child-key", snap.key);
+    voteId.addEventListener("click", voteClicked);
+
+    totalVotes += snap.val().votes;
+});
+
+function voteClicked(e) {
+    var userID = e.target.getAttribute("child-key");
+
+    const userRef = dbRef.child('poll');
+    const celebRef = dbRef.child('poll/' + userID);
+
+    dbRef.child('poll/' + userID).child('votes').set(firebase.database.ServerValue.increment(1))
+
+    // const increment = firebase.firestore.FieldValue.increment(1);
+    // celebRef.update({ votes: increment });
+
+    // celebRef.on("value", snap => {
+    //   console.log(snap.val().votes);
+    //   snap.val().votes + 1;
+    // });
+
+    userRef.on("child_added", snap => {
+      console.log("vote-" + snap.val().name);
+
+      const userDetailUI = document.getElementById("vote-" + snap.val().id);
+      userDetailUI.innerHTML = snap.val().votes + " votes";
+
+      if (snap.val().votes > highestVote) {
+        highestVote = snap.val().votes;
+        userDetailUI.innerHTML = "<span style='font-size: 24px'>🏆</span> " + snap.val().votes + " votes";
+      }
+
+      
+    });
+
+
+  //  userRef.on("child_added", snap => {
+    //  const barWidth = snap.val().votes / totalVotes;
+      // console.log(snap.val().votes);
+      // console.log(totalVotes);
+      // console.log('BAR WIDTH: ' + barWidth);
+
+            // const $ = document.createElement("p");
+      // $p.innerHTML = snap.val().name + " - " + snap.val().votes; userDetailUI.append($p);
+
+      // var element = document.createElement('select');
+      // element.style.width = "100px";
+
+
+
+    //  document.getElementById("contest-bar-" + snap.val().name).style.width = barWidth;
+     // document.getElementById("contest-bar-ben").style.width= barWidth;
+
+      
+      // console.log(("contest-bar-" + snap.val().name));
+      // document.getElementById("contest-bar-" + snap.val().name).style.setProperty("--w", barWidth);
+
+  
+
+   // });
+
+ 
+}
+
+
+</script>
+</body>
+</html>
+
+<script>
+
+
+
+
+const tick = document.querySelectorAll('.tick');
+
+window.addEventListener("scroll", ticker);
+
+function ticker() {
+   tick[0].style.backgroundPosition = `${-window.pageYOffset / 2}px`;
+   tick[1].style.backgroundPosition = `${-window.pageYOffset / 2}px`;
+   tick[2].style.backgroundPosition = `${window.pageYOffset / 2}px`;
+};
+
+function ani() {
+  document.getElementById('pinata').className = 'swing';
+};
+
+
+var myAudio = document.getElementById("myAudio");
+var isPlaying = false;
+var index = 0;
+
+function togglePlay() {
+  isPlaying ? myAudio.pause() : myAudio.play();
+  isPlaying ? document.getElementById("playToggle").src="play.svg" : document.getElementById("playToggle").src="pause.svg" ;
+
+};
+
+myAudio.onplaying = function() {
+  isPlaying = true;
+};
+myAudio.onpause = function() {
+  isPlaying = false;
+};
+
+// playlist = {
+//   "songs": [
+//     {"name":"Let's Dance - David Bowie", "file":"letsdance.mp3"},
+//     {"name":"Kickstart My Heart - Mötley Crüe", "file":"kickstart.mp3"}
+//   ]
+// }
+
+var songs = [
+    ["Let's Dance - David Bowie","letsdance.mp3"],
+    ["Kickstart My Heart - Mötley Crüe","kickstart.mp3"],
+    ["Dancing with Myself - Billy Idol","dancingwithmyself.mp3"],
+    ["The Shock Of The Lightning - Oasis","lightning.mp3"],
+    ["Modern Man - Arcade Fire","modernman.mp3"],
+    ["Uprising - Muse","uprising.mp3"],
+    ["Common People - Pulp","commonpeople.mp3"],
+    ["Trouble's Coming - Royal Blood","troublescoming.mp3"],
+    ["God Save the Queen - Sex Pistols","godsavethequeen.mp3"],
+    ["Lo/Hi - The Black Keys","lohi.mp3"],
+    ["Around the World - Daft Punk","aroundtheworld.mp3"],
+    ["Bad Decisions - The Strokes","baddecisions.mp3"]
+];
+
+
+
+function nextSong() {
+  myAudio.pause();
+  var randomItem = songs[Math.random() * songs.length | 0];
+  // alert(randomItem[0]);
+
+  document.getElementById("playToggle").src="pause.svg"
+
+  document.getElementById("song-intro").innerHTML = "Now Playing";
+
+
+  document.getElementById("song-title").innerHTML = randomItem[0];
+  document.getElementById("myAudio").src= randomItem[1];
+  myAudio.play();
+
+};
+
+
+$( "#target" ).on({
+    mousedown: function() {
+        $(this).data('timer', setTimeout(function() {
+              foo();
+        }, 500));
+        $(this).data('timer2', setTimeout(function() {
+              foo2();
+        }, 2000));
+        $(this).data('timer3', setTimeout(function() {
+              foo3();
+        }, 3500));
+        $(this).data('timer4', setTimeout(function() {
+              foo4();
+        }, 5000));
+    },
+    mouseup: function() {
+        clearTimeout( $(this).data('timer') );
+        clearTimeout( $(this).data('timer2') );
+        clearTimeout( $(this).data('timer3') );
+        clearTimeout( $(this).data('timer4') );
+    }
+});
+
+
+function foo() {
+  document.getElementById('drinking1').src='drink2.jpg';
+}
+
+function foo2() {
+  document.getElementById('drinking1').src='drink3.jpg';
+}
+
+function foo3() {
+  document.getElementById('drinking1').src='drink4.jpg';
+}
+
+function foo4() {
+  document.getElementById('drinking1').src='drink5.jpg';
+}
+
+$('button').on('click', function(){  
+  function random(max){
+      return Math.random() * (max - 0) + 0;
+  }
+
+  var c = document.createDocumentFragment();
+  for (var i=0; i<100; i++) {
+    var styles = 'transform: translate3d(' + (random(500) - 250) + 'px, ' + (random(200) - 150) + 'px, 0) rotate(' + random(360) + 'deg);\
+                  background: hsla('+random(360)+',100%,50%,1);\
+                  animation: bang 700ms ease-out forwards;\
+                  opacity: 0';
+      
+    var e = document.createElement("i");
+    e.style.cssText = styles.toString();
+    c.appendChild(e);
+}
+// document.body.appendChild(c);
+  $(this).append(c);
+})
+
+function changePhoto1() {
+  document.getElementById("gift1").src="grass.png" 
+  document.getElementById("gift-results").innerHTML = "<p style='font-size: 25px; margin: 0; padding-top: 70px'>You got a</p><h2 style='margin: 10; font-size: 50px'>Blade of Grass</h2>";
+  
+};
+
+function changePhoto2() {
+  document.getElementById("gift2").src="slippers.png"
+  document.getElementById("gift-results").innerHTML = "<p style='font-size: 25px; margin: 0; padding-top: 70px'>You got a</p><h2 style='margin: 10; font-size: 50px'>Pair of Baguette Slippers</h2>";
+ 
+};
+
+function changePhoto3() {
+  document.getElementById("gift3").src="ferrari.png" 
+  document.getElementById("gift-results").innerHTML = "<p style='font-size: 25px; margin: 0; padding-top: 70px'>You got a</p><h2 style='margin: 10; font-size: 50px'>Ferrari</h2>";
+};
+
+function changePhoto4() {
+  document.getElementById("gift4").src="key.png" 
+  document.getElementById("gift-results").innerHTML = "<p style='font-size: 25px; margin: 0; padding-top: 70px'>You got a</p><h2 style='margin: 10; font-size: 50px'>Bottle of Storm Trooper Whiskey</h2>";
+};
+
+function changePhoto5() {
+  document.getElementById("gift5").src="tissuee.png" 
+  document.getElementById("gift-results").innerHTML = "<p style='font-size: 25px; margin: 0; padding-top: 70px'>You got</p><h2 style='margin: 10; font-size: 50px'>Elon Musk's Used Tissue</h2>";
+};
+
+</script>
+
+<script>
+  $(function() {
+  $( "#draggable01" ).draggable();
+  });
+  </script>

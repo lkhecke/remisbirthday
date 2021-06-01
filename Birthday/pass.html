@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>????</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<body style="background-color: black; padding: 30px;">
+
+
+<div>
+ <p id="demo" class="secret-text"></p>
+</div>
+<form id="form">
+    <input type="buttton" id="btn" value="Submit" onclick="checkPswd();" style="display:none" />
+    <input type="password" id="pswd" autofocus="autofocus">
+</form>
+<p id="error" class="error-text"></p>
+
+<script type="text/javascript">
+
+window.onload = function() {
+    typeWriter();
+};
+
+
+
+
+    function checkPswd() {
+        var confirmPassword = "party";
+        var password = document.getElementById("pswd").value;
+        if (password == confirmPassword) {
+             window.location="index.html";
+        }
+        else{
+            document.getElementById("error").innerHTML = 'Incorrect password';
+        }
+    }
+
+
+var i = 0;
+var txt = 'WARNING: You are about to enter party territory. Please enter the secret code.';
+var speed = 50;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+
+  else {
+  }
+
+
+}
+
+// Get the input field
+var input = document.getElementById("pswd");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+
+    // Trigger the button element with a click
+    document.getElementById("btn").click();
+  }
+});
+
+$(function() {
+    $("form").submit(function() { return false; });
+});
+</script>
+</body>
+</html>
